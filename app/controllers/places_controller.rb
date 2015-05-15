@@ -3,6 +3,10 @@ class PlacesController < ApplicationController
 		@places=Place.paginate(:page => params[:page], :per_page => 5)
 	end
 
+	def new
+		@places=Place.new
+	end
+
 
 end
 		
