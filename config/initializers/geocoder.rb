@@ -1,7 +1,7 @@
 Geocoder.configure(
 
   :lookup => :bing,
-  :api_key => ENV['AtvZLuuZc96aXNC6fzGbu3gZIHQnvaBnhPsPgyqhCHosUF0dLsL-nob0EGDgktKm'],
+  :api_key => ENV['GEOCODER_API_KEY'],
 )
   # geocoding options
   # :timeout      => 3,           # geocoding service timeout (secs)
