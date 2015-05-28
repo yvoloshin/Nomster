@@ -77,11 +77,29 @@
 	<% @place.comments.each do |comment| %>
 	  <div class="col-xs-12 col-sm-6">
 	  	<blockquote>
-	  		<% if place.comments.last.humanized_rating.present? %>
-	  		<b><%= place.comments.last.humanized_rating %></b> -
+	  		<% if comment.humanized_rating.present? %>
+	  		<b><%= comment.humanized_rating %></b> -
 	  		<% end %>
-	  		<%= place.comments.last.message %>
-	  		<small><%= place.comments.last.user.email %></small>
+	  		<%= comment.message %>
+	  		<small><%= comment.user.email %></small>
 	  	</blockquote> 
 	  </div>
 	  <% end %>
+
+	  
+    <%= simple_form_for @photo, :html => {:multipart => true}, :url => place_photos_path(@place) do |f| %>
+        <%= f.file_field :picture %>
+        <br />
+	    <%= f.input :caption %>
+	    <br />
+	    <%= f.submit 'Add a photo', :class=>"btn btn-primary" %>      
+    <% end %>
+
+    <div class="booyah-box col-xs-10 col-xs-offset-1">
+      <% @place.photos.each do |photo| %>
+      <%= photo.place_id %>
+      <%= image_tag photo.picture_url(:thumb) %>
+      <%= photo.caption %>
+      <% end %>
+    </div>
+    
