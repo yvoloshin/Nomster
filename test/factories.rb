@@ -1,11 +1,14 @@
 FactoryGirl.define do
+ 
   factory :user do
-  	email "email@gmail.com"
-  	password "password"
-    password_confirmation "password"
-  end 
+    email "email@email.com"
+    password "omglolhahaha"
+    password_confirmation "omglolhahaha"
+  end
+
   factory :place do
     name "Lulu's Bakery"
+    address "123 Penny Lane"
     description "Try the cupcakes"
     latitude(42.3631519)
     longitude(-71.056098)
