@@ -9,9 +9,9 @@ class CommentsControllerTest < ActionController::TestCase
 	comment = FactoryGirl.create(:comment)
 		assert_difference 'Comment.count' do
 	  	post :create, :place_id => place.id, :comment => {
-	        :rating  => '1_star',
-	        :message => 'This place is awful'
-	    } 	
+	  		message: comment.message, 
+	  		rating: comment.rating
+	  	}
 	  end
   assert_equal 1, user.comments.count
   assert_redirected_to place_path(place)
