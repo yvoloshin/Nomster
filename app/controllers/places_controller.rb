@@ -2,7 +2,12 @@ class PlacesController < ApplicationController
 before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy] 
 
 	def index
-		@places=Place.paginate(:page => params[:page], :per_page => 5)
+		if params[:search]
+      		@places = Place.search(params[:search]) #.order("created_at DESC")
+      		@places = @places.paginate(:page => params[:page], :per_page => 5)
+    	else
+			@places=Place.paginate(:page => params[:page], :per_page => 5)
+		end
 	end
 
 	def new
